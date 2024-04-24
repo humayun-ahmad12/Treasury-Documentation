@@ -75,10 +75,21 @@ let treasury_part = T::TreasuryFee::get() * fee;
 
 ```
 
-**Dependencies**
+**Various pallet dependencies on the Treasury**
 
-- Token Pallet: Manages token properties and interactions with the Treasury.
-- Governance Pallet (Optional): Facilitates voting on treasury-related proposals.
+| Pallet                 | Dependency Type                    | Description                                                                                           |
+|------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------|
+| `pallet_bounties`      | Direct Dependency                  | Uses Treasury funds to manage bounties, including funding and slashing.                               |
+| `pallet_tips`          | Direct Dependency                  | Uses Treasury for tips management, including funding for tips and their payouts.                      |
+| `pallet_treasury`      | Self                               | Core functionality of managing funds, spending proposals, and revenue.                                |
+| `pallet_staking`       | Interaction through Events/Callbacks| May interact for slashing and rewards, which could be redirected or impacted by Treasury.             |
+| `pallet_alliance`      | Funds Management                   | Manages deposits and potentially uses funds for managing alliances.                                   |
+| `pallet_child_bounties`| Direct Dependency                  | Manages child bounties funding through the Treasury.                                                  |
+| `pallet_society`       | Indirect Dependency                | Manages funds that might interact with the Treasury for rewards and slashes.                          |
+| `pallet_identity`      | Interaction for Slashing           | Uses Treasury as a destination for slashed funds in identity mismanagement.                           |
+| `DealWithFees struct`  | Fee Redistribution                 | Configured to split transaction fees, sending a portion to the Treasury.                              |
+
+
 
 
 
