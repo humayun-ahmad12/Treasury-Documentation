@@ -61,7 +61,7 @@ construct_runtime!(
 
 ### 1. Set the Value in Runtime Configuration:
 
-```
+```rs
 impl my_pallet::Config for Runtime {
     type TreasuryFee = Permill::from_percent(2);
 }
@@ -69,7 +69,7 @@ impl my_pallet::Config for Runtime {
 ```
 
 ### 2. Use the Parameter in Pallet Logic:
-```
+```rs
 let fee = 1000;
 let treasury_part = T::TreasuryFee::get() * fee;
 
