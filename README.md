@@ -59,6 +59,22 @@ construct_runtime!(
 );
 ```
 
+### 1. Set the Value in Runtime Configuration:
+
+```
+impl my_pallet::Config for Runtime {
+    type TreasuryFee = Permill::from_percent(2);
+}
+
+```
+
+### 2. Use the Parameter in Pallet Logic:
+```
+let fee = 1000;
+let treasury_part = T::TreasuryFee::get() * fee;
+
+```
+
 **Dependencies**
 
 - Token Pallet: Manages token properties and interactions with the Treasury.
