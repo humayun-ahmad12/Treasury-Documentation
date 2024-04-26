@@ -90,6 +90,58 @@ let treasury_part = T::TreasuryFee::get() * fee;
 | `DealWithFees struct`  | Fee Redistribution                 | Configured to split transaction fees, sending a portion to the Treasury.                              |
 
 
+# Treasury Pallet Overview
+
+The Treasury Pallet is designed to manage the funds accumulated by a blockchain project. It handles proposals for spending these funds, including their approval and rejection by the governing body.
+
+## Treasury Pallet Components
+
+### Proposal
+A suggestion to allocate funds from the treasury pot to a beneficiary. Proposals are submitted by users and include details such as the amount of funds requested and the beneficiary account.
+
+### Beneficiary
+An account that receives funds from a proposal if it is approved by the governance system.
+
+### Deposit
+A security bond deposited by the proposer when making a proposal. This deposit may be returned or slashed depending on whether the proposal is accepted or rejected.
+
+### Pot
+The unspent funds accumulated by the treasury. These funds are gathered from various sources like transaction fees, inefficiencies, penalties, and other means specified by the blockchain's governance.
+
+## High-Level Features
+
+- **Proposal Creation**: Users can submit proposals to request funds from the treasury.
+- **Proposal Rejection/Approval**: Proposals can be approved or rejected by the council or other governance mechanisms.
+- **Proposal Tracking**: The system provides mechanisms to track the status and history of proposals.
+- **Spending**: Execution of successful proposals leading to disbursement of funds.
+
+## How It Works
+
+### Origins
+The ability to interact with the treasury pallet begins with designated origins, typically including governance roles like a council.
+
+### Governance
+The governance system, often embodied by a council, plays a critical role in managing proposals. It provides oversight and makes final decisions on fund disbursement.
+
+### Extrinsics
+Treasury functionality is exposed through extrinsics that allow users to submit proposals, and for councils to approve, reject, or execute spending.
+
+### Proposal ID
+Each proposal is assigned a unique identifier which is used to track its progress through submission, approval, execution, and potential archival.
+
+## Usage in Substrate/Polkadot
+
+1. **Proposal Submission**: A proposer introduces a Treasury proposal through a user interface, specifying the desired amount and the beneficiary.
+2. **Collaboration**: Council members and other stakeholders discuss the proposal, often off-chain, to determine its viability and impact.
+3. **Motion Creation**: A council member may create a collective motion to propose the approval of the Treasury proposal.
+4. **Voting**: Council members vote on the collective motion, either in favor (aye) or against (nay).
+5. **Approval Execution**: If the motion passes, the council executes the approval, moving the proposal into the approved state.
+6. **Funding Disbursement**: Approved proposals wait in the queue until funds are available in the treasury pot for spending.
+
+These steps ensure that treasury funds are managed transparently and responsibly, aligning with the broader goals of the blockchain ecosystem.
+
+
+
 
 # Blockchain Transaction Handling
 
